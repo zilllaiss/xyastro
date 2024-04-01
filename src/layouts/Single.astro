@@ -1,0 +1,12 @@
+---
+import Base from "./Base.astro"
+import Nav from "./Nav.astro"
+
+let {title} = Astro.props
+---
+
+<Base title={title} >
+    <Nav />
+    <h2>{title}</h2>
+    <slot />
+</Base>
