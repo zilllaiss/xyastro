@@ -2,13 +2,6 @@
 import Single from "../layouts/Single.astro";
 export const prerender = false 
 
-type Error = {
-    name: string
-    password: string 
-}
-
-const errors: Error = { name: "", password: "" }
-
 if (Astro.request.method === 'POST') {
     try {
 

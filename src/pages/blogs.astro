@@ -1,0 +1,33 @@
+---
+import Single from "../layouts/Single.astro"
+
+const ph = [
+    {
+        id: 1,
+        title: 'first post',
+        preamble: 'this is the first post',
+    }, 
+    {
+        id: 2,
+        title: 'second post',
+        preamble: 'this is the second post'
+    },
+    {
+        id: 3,
+        title: 'third post',
+        preamble: 'this is the third post'
+    }
+]
+---
+<Single title="Blogs">
+    
+    {ph.map(p => { 
+        return (
+            <div>
+                <h2><a href={`/posts/${p.id}`}>{p.title}</a></h2>
+                <p>{p.preamble}</p>    
+            </div>
+        )
+    })}
+
+</Single>

@@ -1,5 +1,7 @@
 ---
 let {title} = Astro.props
+
+const date = new Date().getFullYear()
 ---
 <html lang="en">
 	<head>
@@ -11,6 +13,9 @@ let {title} = Astro.props
 	</head>
 	<body>
         <slot />
+		<footer>
+			© {date} Zill_Laiss.
+		</footer>
     </body>
 	
 </html>
