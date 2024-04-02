@@ -4,6 +4,8 @@ import Single from "../../layouts/Single.astro"
 
 export const getStaticPaths: GetStaticPaths = async ({paginate}) => {
     const posts = await Astro.glob('../posts/*.md')
+
+    posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate))
     
     return paginate(posts, { pageSize: 7 });
 }
@@ -15,7 +17,7 @@ interface Props {
 const {page} = Astro.props;
 
 ---
-<Single title="Blogs">
+<Single title="Blog">
     <main class="main-pair">
         <article class="post-field">
             {page.data.map(p => { 
@@ -35,15 +37,22 @@ const {page} = Astro.props;
     
         </article>
         <aside class="bar-right">
-            <h3>placholder</h3>
+            <h3>Tags</h3>
+            <div class="section-tag">
+                placeholder
+            </div>
+            <h3>Socials</h3>
+            <div>
+                placeholder
+            </div>
         </aside>
     </main>
     <div class="pagination">
         <!-- TODO: Fix the styling -->
-        {page.currentPage - 1 > 0 && <p><a href={page.url.prev}>Prev</a></p>}
-        {page.size >= 8 && <p>{page.currentPage}</p>}
-        {page.currentPage !== page.lastPage && <p><a href={page.url.next}>Next</a></p>}
-    </div>
+        {page.currentPage - 1 > 0 && <div class="pagination-page"><a href={page.url.prev}>Prev</a></div>}
+        {page.size > 7 && <div class="pagination-current">{page.currentPage}</div>}
+        {page.currentPage !== page.lastPage && <div class="pagination-page"><a href={page.url.next}>Next</a></div>}
+    </di>
 
 </Single>
 

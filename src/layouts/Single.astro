@@ -7,13 +7,21 @@ let {title} = Astro.props
 
 <Base title={title} >
     <Nav />
-    <h2>{title}</h2>
+    <div class="header-container">
+        <h2>{title}</h2>
+    </div>
     <slot />
 </Base>
 
-<style>
-    h2 {
-        position:relative;
-        left: 10%;
+<style lang="scss">
+    .header-container {
+        display: flex;
+        margin: 45px 8% 20px 10%;
+
+        h2 {
+            color: white;
+            width: 1206px;
+            max-width: 1204px;
+        }
     }
 </style>
