@@ -1,12 +1,19 @@
 ---
-import Single from "./Single.astro"
+import SingleNoH2 from "./SingleNoH2.astro"
 const { frontmatter } = Astro.props
 
 ---
-<Single title={frontmatter.title} >
-    <p>Written by {frontmatter.author}</p>
-    <p>Published on: {frontmatter.pubDate.toString().slice(0,10)}</p>
-    <div class="post-content">
-        <slot />
-    </div>
-</Single>
+<SingleNoH2 title={frontmatter.title} >
+    <main class="post-field">
+        <article class="post-field">
+            <h2 class="post-title">{frontmatter.title}</h2>
+            <section class="post-date">
+                Written by {frontmatter.author} 
+                <span> on{frontmatter.pubDate.toString().slice(0,10)}</span>
+            </section>
+            <div class="post-content">
+                <slot />
+            </div>
+        </article>
+    </main>
+</SingleNoH2>

@@ -7,13 +7,5 @@ let {title} = Astro.props
 
 <Base title={title} >
     <Nav />
-    <h2>{title}</h2>
     <slot />
 </Base>
-
-<style>
-    h2 {
-        position:relative;
-        left: 10%;
-    }
-</style>

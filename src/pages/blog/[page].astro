@@ -16,20 +16,39 @@ const {page} = Astro.props;
 
 ---
 <Single title="Blogs">
+    <main class="main-pair">
+        <article class="post-field">
+            {page.data.map(p => { 
+                return (
+                    <div class="post">
+                        <section class="post-date">{p.frontmatter.pubDate.toString().slice(0,10)}</section>
+                        <section class="post-container">
+                            <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
+                            <div class="post-content">
+                                {p.frontmatter.preamble}
+                                <p class="readmore"><a href={p.url}>read post</a></p>
+                            </div>
+                        </section>
+                    </div>    
+                )
+            })}
     
-    {page.data.map(p => { 
-        return (
-            <div>
-                <h2><a href={`${p.url}`}>{p.frontmatter.title}</a></h2>
-                <p>{p.frontmatter.preamble}</p>    
-            </div>
-        )
-    })}
-
+        </article>
+        <aside class="bar-right">
+            <h3>placholder</h3>
+        </aside>
+    </main>
     <div class="pagination">
+        <!-- TODO: Fix the styling -->
         {page.currentPage - 1 > 0 && <p><a href={page.url.prev}>Prev</a></p>}
-        {page.currentPage && <p>{page.currentPage}</p>}
+        {page.size >= 8 && <p>{page.currentPage}</p>}
         {page.currentPage !== page.lastPage && <p><a href={page.url.next}>Next</a></p>}
     </div>
 
 </Single>
+
+<style>
+    .post-date {
+        color: #fff;
+    }
+</style>
