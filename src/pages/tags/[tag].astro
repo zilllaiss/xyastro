@@ -29,8 +29,10 @@ const { posts } = Astro.props
 ---
 
 <Single title={tag} >
-    <p>page tagged with {tag}</p>
-    <ul>
-        {posts.map(p => <li><a href={p.url}>{p.frontmatter.title}</a></li>)}
-    </ul>
+    <main>
+        <p>page tagged with {tag}</p>
+        <ul>
+            {posts.map(p => <li><a href={p.url}>{p.frontmatter.title}</a></li>)}
+        </ul>
+    </main>
 </Single>
