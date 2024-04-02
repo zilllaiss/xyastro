@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import Single from "../../layouts/Single.astro"
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const allPosts = await Astro.glob('../posts/*.md')
+    
+    const tags = [...new Set(allPosts.map(p => p.frontmatter.tags).flat())]
+
+    return tags.map(tag => {
+        const filteredPosts = allPosts.filter(p => {
+            return p.frontmatter.tags.includes(tag)
+        })
+
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        }
+    }) 
+}
+
+interface Props<T = any> {
+    posts: T[]
+}
+
+const { tag } = Astro.params
+const { posts } = Astro.props
+
+---
+
+<Single title={tag} >
+    <p>page tagged with {tag}</p>
+    <ul>
+        {posts.map(p => <li><a href={p.url}>{p.frontmatter.title}</a></li>)}
+    </ul>
+</Single>

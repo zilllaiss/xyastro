@@ -6,5 +6,7 @@ const { frontmatter } = Astro.props
 <Single title={frontmatter.title} >
     <p>Written by {frontmatter.author}</p>
     <p>Published on: {frontmatter.pubDate.toString().slice(0,10)}</p>
-    <slot />
+    <div class="post-content">
+        <slot />
+    </div>
 </Single>
