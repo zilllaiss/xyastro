@@ -28,16 +28,16 @@ const {page} = Astro.props;
                     <div class="post">
                         <section class="post-date">{p.frontmatter.pubDate.toString().slice(0,10)}</section>
                         <section class="post-container">
-                            <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
-                            <div class="post-content">
-                                {p.frontmatter.preamble}
-                                <p class="readmore"><a href={p.url}>read post</a></p>
-                            </div>
+                            <section class="post-header">
+                                <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
+                                <p>{p.frontmatter.preamble}</p>
+                                {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}> }
+                                <p class="readmore"><a href={p.url}>...read post</a></p>
+                            </section>
                         </section>
                     </div>    
                 )
             })}
-    
         </article>
         <aside class="bar-right">
             <h3>Tags</h3>

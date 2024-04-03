@@ -6,14 +6,18 @@ const { frontmatter } = Astro.props
 <SingleNoH2 title={frontmatter.title} >
     <main class="main-pair">
         <article class="post-field">
-            <h2 class="post-title">{frontmatter.title}</h2>
-            <section class="post-date">
-                Written by {frontmatter.author} 
-                <span>on {frontmatter.pubDate.toString().slice(0,10)}</span>
+            <section class="post-header">
+                <h2 class="post-title">{frontmatter.title}</h2>
+                <div class="post-date">
+                    Written by {frontmatter.author} 
+                    <span>on {frontmatter.pubDate.toString().slice(0,10)}</span>
+                </div>
+                <p>{frontmatter.preamble}</p>
+                {frontmatter.image && <img src={frontmatter.image.url} alt={frontmatter.image.alt}> }
             </section>
-            <div class="post-content">
+            <section class="post-content">
                 <slot />
-            </div>
+            </section>
         </article>
         <aside class="bar-right">
             <p>placeholder</p>
@@ -23,10 +27,7 @@ const { frontmatter } = Astro.props
 
 <style lang="scss">
     .post {
-       
         &-date {
-            margin: 13px auto auto 40px;
-
             span {
                 margin-left: 0;
             }

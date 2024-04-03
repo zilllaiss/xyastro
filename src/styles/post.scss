@@ -1,6 +1,6 @@
 .post {
     @include margintb(20px, 49px);
-    width: 900px;
+    width: var(--post-width);
 
     &-info {
         flex: 1;
@@ -24,7 +24,6 @@
     &-title {
         @include fontsz(32px, var(--title-blue));
         @include margintb(15px, 3px);
-        margin-left: 41px;
         font-family: var(--sans-serif);
         font-weight: 399;
         font-style: italic;
@@ -40,8 +39,23 @@
             @include borderleft(2px solid #8e8e8e, 15px);
         }
 
-        &-content {
+        &-header {
             margin: 20px;
+            padding-right: var(--contentmarginright);
+            padding-left: 20px;
+            max-width: calc(var(--outerwidth) - var(--bar-width));
+
+            img {
+                width: 100%;
+                height: auto;
+                max-width: calc(var(--outerwidth) - var(--bar-width) - 100px);
+                max-height: auto;
+                margin-top: 14px;
+            }
+        }
+
+        &-content {
+            margin: 0 20px 20px;
             padding-right: var(--contentmarginright);
             padding-left: 20px;
             max-width: calc(var(--outerwidth) - var(--bar-width));
@@ -54,12 +68,6 @@
 
         a {
             color: var(--link-blue);
-        }
-
-        img {
-            width: auto;
-            height: 60vh;
-            min-height: 300px;
         }
 
         h1 {
