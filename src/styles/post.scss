@@ -27,6 +27,7 @@
         font-family: var(--sans-serif);
         font-weight: 399;
         font-style: italic;
+        text-transform: none;
     }
 
     &-date,
@@ -79,6 +80,7 @@
 
         h2 {
             font-size: 1.1rem;
+            text-transform: none;
         }
 
         h3 {
@@ -95,6 +97,16 @@
             padding: 16px;
         }
     }
+}
+
+.tag {
+    margin-right: 10px;
+    background: #3e3e3e;
+    padding: 0px 9px 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
 }
 
 .bar-right {

@@ -30,8 +30,9 @@ const {page} = Astro.props;
                         <section class="post-container">
                             <section class="post-header">
                                 <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
+                                {p.frontmatter.tags && <div>{p.frontmatter.tags.map(t => <span class="tag"><a href={`tags/${t}`}>{t}</a></span>)}</div>}
                                 <p>{p.frontmatter.preamble}</p>
-                                {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}> }
+                                {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}></img> }
                                 <p class="readmore"><a href={p.url}>...read post</a></p>
                             </section>
                         </section>
@@ -44,10 +45,15 @@ const {page} = Astro.props;
             <div class="section-tag">
                 placeholder
             </div>
-            <h3>Socials</h3>
-            <div>
-                placeholder
-            </div>
+            <section class="icon">
+                <h3>Find me on:</h3>
+                <div class="icon-container">
+                    <a href="https://github.com/zilllaiss/"><img class="icon-small" src="/icons/github.svg" alt="github">github.com/zilllaiss/</a>
+                </div>
+                <div class="icon-container">
+                    <img class="icon-small" src="/icons/discord.svg" alt="discord"><span>zill_laiss</span>
+                </div>
+            </section>
         </aside>
     </main>
     <div class="pagination">
