@@ -2,19 +2,45 @@
 import type { GetStaticPaths, Page } from "astro";
 import SingleNoH2 from "../../layouts/SingleNoH2.astro"
 
+
 export const getStaticPaths: GetStaticPaths = async ({paginate}) => {
     const posts = await Astro.glob('../posts/*.md')
+    
+    function countOccurrences(arr: any[], value: string) {
+        return arr.reduce((acc, val) => (val === value ? acc + 1 : acc), 0);
+    }
+
+    const tags = posts.map(p => p.frontmatter.tags).flat().sort()
+    const uniqueTags = [...new Set(tags)]
+
+    const tagCount = uniqueTags.map(t => {
+        return countOccurrences(tags, t)
+    })
 
     posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate))
     
-    return paginate(posts, { pageSize: 7 });
+    const page = paginate(posts, { pageSize: 7 })
+    return page.map(p => {
+        
+        return {
+            params: {
+                page: p.params.page
+            },
+            props: {
+                page: p.props.page,
+                uniqueTags,
+                tagCount
+            }
+        }
+    })
 }
 
 interface Props {
     page: Page
 }
 
-const {page} = Astro.props;
+// @ts-ignore
+const {page, uniqueTags, tagCount} = Astro.props;
 
 ---
 <SingleNoH2 title="Blog">
@@ -30,7 +56,7 @@ const {page} = Astro.props;
                         <section class="post-container">
                             <section class="post-header">
                                 <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
-                                {p.frontmatter.tags && <div>{p.frontmatter.tags.map(t => <span class="tag"><a href={`tags/${t}`}>{t}</a></span>)}</div>}
+                                {p.frontmatter.tags && <div>{p.frontmatter.tags.map((t: string) => <span class="tag"><a href={`/tags/${t}`}>{t}</a></span>)}</div>}
                                 <p>{p.frontmatter.preamble}</p>
                                 {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}></img> }
                                 <p class="readmore"><a href={p.url}>...read post</a></p>
@@ -43,7 +69,9 @@ const {page} = Astro.props;
         <aside class="bar-right">
             <h3>Tags</h3>
             <div class="section-tag">
-                placeholder
+                {uniqueTags.map((t: string, i: number) => { return (
+                    <div><a href={`/tags/${t}`}>{t} ({tagCount[i]})</a></div>
+                )})}
             </div>
             <section class="icon">
                 <h3>Find me on:</h3>

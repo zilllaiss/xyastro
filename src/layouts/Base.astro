@@ -38,6 +38,10 @@ const date = new Date().getFullYear();
     a {
         color: inherit;
         text-decoration: none;
+
+        &:hover {
+                color: var(--link-blue)
+        }
     }
 
     h1 {
@@ -61,19 +65,20 @@ const date = new Date().getFullYear();
         padding: 0;
         overflow: hidden;
 
-    li {
-        float: left;
+        li {
+            float: left;
 
-        a {
-            display: block;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
+            a {
+                display: block;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
 
-        a:hover {
-            background-color: #252550;
+                &:hover {
+                    background-color: #252550;
+                    color: inherit;
+                }
             }
         }
     }
@@ -121,6 +126,12 @@ const date = new Date().getFullYear();
             justify-content: center;
             margin: var(--mainmargin);
             padding: var(--upperpadding);
+        }
+    }
+
+    .section {
+        &-tag {
+            font-family: calibri, Helvetica;
         }
     }
 
