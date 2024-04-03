@@ -24,7 +24,7 @@
     &-title {
         @include fontsz(32px, var(--title-blue));
         @include margintb(15px, 3px);
-        margin-left: 35px;
+        margin-left: 41px;
         font-family: var(--sans-serif);
         font-weight: 399;
         font-style: italic;
@@ -44,9 +44,10 @@
             margin: 20px;
             padding-right: var(--contentmarginright);
             padding-left: 20px;
+            max-width: calc(var(--outerwidth) - var(--bar-width));
 
         p {
-            @include margintb(26px, 26px);
+            @include margintb(19px, 17px);
             font-size: 0.95rem;
             line-height: var(--contentlinespacing);
         }

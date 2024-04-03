@@ -7,11 +7,13 @@ const tags = [...new Set(allPosts.map(p => p.frontmatter.tags).flat())]
 ---
 
 <Single title="Tags">
-    <main>
-        <ul>
-            {tags.map(t => {
-                return <li><a href={t}>{t}</a></li>
-            })}
-        </ul>
+    <main class="main-single">
+        <div class="main-single-child">
+            <ul>
+                {tags.map(t => {
+                    return <li><a href={t}>{t}</a></li>
+                })}
+            </ul>
+        </div>
     </main>
 </Single>

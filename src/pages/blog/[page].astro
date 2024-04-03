@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths, Page } from "astro";
-import Single from "../../layouts/Single.astro"
+import SingleNoH2 from "../../layouts/SingleNoH2.astro"
 
 export const getStaticPaths: GetStaticPaths = async ({paginate}) => {
     const posts = await Astro.glob('../posts/*.md')
@@ -17,7 +17,10 @@ interface Props {
 const {page} = Astro.props;
 
 ---
-<Single title="Blog">
+<SingleNoH2 title="Blog">
+    <div class="header-container">
+        <h2>Blog</h2>
+    </div>
     <main class="main-pair">
         <article class="post-field">
             {page.data.map(p => { 
@@ -48,15 +51,20 @@ const {page} = Astro.props;
         </aside>
     </main>
     <div class="pagination">
-        <!-- TODO: Fix the styling -->
         {page.currentPage - 1 > 0 && <div class="pagination-page"><a href={page.url.prev}>Prev</a></div>}
         {page.size > 7 && <div class="pagination-current">{page.currentPage}</div>}
         {page.currentPage !== page.lastPage && <div class="pagination-page"><a href={page.url.next}>Next</a></div>}
     </di>
 
-</Single>
+</SingleNoH2>
 
-<style>
+<style lang="scss">
+    .header-container {
+        h2 {
+            width: 1206px;
+        }
+    } 
+
     .post-date {
         color: #fff;
     }

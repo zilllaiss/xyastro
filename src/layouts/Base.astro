@@ -35,23 +35,6 @@ const date = new Date().getFullYear();
 
     }
 
-    footer {
-        @include divcenter(column);
-    }
-
-    .pagination {
-        @include divcenter(inherit);
-
-        &-page {
-            margin: 10px;
-        }
-
-        &-current {
-            color: var(--cyan);
-            margin: 10px;
-        }
-    }
-
     a {
         color: inherit;
         text-decoration: none;
@@ -95,27 +78,89 @@ const date = new Date().getFullYear();
         }
     }
 
+    footer {
+        @include divcenter(column);
+        margin-top: 5rem;
+    }
+
+    .header-container {
+        display: flex;
+        margin: 45px 8% 20px 8%;
+        padding: 20px;
+
+        h2 {
+            color: white;
+            width: var(--outerwidth);
+        }
+    }
+
     .main {
         &-container {
             position: relative;
         }
 
         &-single {
-            @include divcenter;
-            margin: 20px 8% 20px 8%;
+            @include divcenter(inherit);
+            margin: var(--mainmargin);
             padding: 20px;
+
+            &-child {
+                width: var(--outerwidth);
+            }
+            
+            &-center {
+                @include divcenter;
+                margin: var(--mainmargin);
+                padding: 20px;
+            }
         }
 
         &-pair {
             display: flex;
-            margin: 20px 8% 20px 8%;
-            padding: 20px;
             justify-content: center;
+            margin: var(--mainmargin);
+            padding: 20px;
         }
     }
 
     .readmore {
         color: var(--link-blue);
         font-style: italic;
+    }
+
+    .pagination {
+        @include divcenter(inherit);
+
+        &-page {
+            margin: 10px;
+        }
+
+        &-current {
+            color: var(--cyan);
+            margin: 10px;
+        }
+    }
+
+    // ! browser specific
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #050505;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #222222;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Scrollbar styling for Firefox */
+    html {
+        scrollbar-color: #141414 #000000;
     }
 </style>

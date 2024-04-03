@@ -4,8 +4,10 @@ import Count from "../components/Count.svelte"
 ---
 
 <Single title="Counter" >
-    <main>
-        <Count client:load></Count>
+    <main class="main-single">
+        <div class="main-single-child" >
+            <Count client:load></Count>
+        </div>
     </main>
 </Single>
 

@@ -28,11 +28,13 @@ if (Astro.request.method === 'POST') {
 ---
 
 <Single title="Forms" >
-    <main>
-        <form method="POST">
-            <input type="text" name="name" id="name" placeholder="name">
-            <input type="password" name="password" id="password" placeholder="password">
-            <button type="submit">submit</button>
-        </form>
+    <main class="main-single">
+        <div class="main-single-child">
+            <form method="POST">
+                <input type="text" name="name" id="name" placeholder="name">
+                <input type="password" name="password" id="password" placeholder="password">
+                <button type="submit">submit</button>
+            </form>
+        </div>
     </main>
 </Single>
