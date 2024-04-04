@@ -88,7 +88,7 @@ const {page, uniqueTags, tagCount} = Astro.props;
         {page.currentPage - 1 > 0 && <div class="pagination-page"><a href={page.url.prev}>Prev</a></div>}
         {page.size > 7 && <div class="pagination-current">{page.currentPage}</div>}
         {page.currentPage !== page.lastPage && <div class="pagination-page"><a href={page.url.next}>Next</a></div>}
-    </di>
+    </div>
 
 </SingleNoH2>
 

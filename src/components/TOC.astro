@@ -1,6 +1,7 @@
 ---
 import TOCHeading from "./TOCHeading.astro"
 
+// https://kld.dev/building-table-of-contents/
 function buildTOC(headings: any[]) {
     const toc: any[] = []
     const parentHeadings = new Map()
@@ -21,8 +22,14 @@ const { headings } = Astro.props
 const toc = buildTOC(headings)
 ---
 
-<div class="toc">
+<div 
+    class="toc" 
+    x-data="{ scrolled: false }"
+    @scroll.window="scrolled = window.scrollY >= 80"
+    x-bind:style="scrolled ? 'position: fixed; top: 80px' : '' "
+    ><h2><a href="#">On this page:</a></h2>
     <ul>
         {toc.map(h => <TOCHeading heading={h}></TOCHeading>)}
     </ul>
 </div>
+<script defer src="/js/alpine.js"></script>

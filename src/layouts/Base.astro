@@ -131,7 +131,7 @@ const date = new Date().getFullYear();
 
     .section {
         &-tag {
-            font-family: calibri, Helvetica;
+            font-family: var(--calibri);
             list-style: none;
             padding: inherit;
         }
@@ -153,6 +153,28 @@ const date = new Date().getFullYear();
         &-current {
             color: var(--cyan);
             margin: 10px;
+        }
+    }
+
+    .toc {
+        position: absolute;
+        top: 160px;
+        padding: 10px 22px;
+        font-family: var(--calibri);
+
+        h2 {
+            font-size: 14px;
+            font-weight: normal;
+            padding-left: 20px;
+            font-family: var(--calibri);
+            margin-bottom: 0;
+        }
+        
+        ul {
+            margin-top: 0;
+            list-style: none;
+            padding-left: 20px;
+            font-size: 14px;
         }
     }
 
