@@ -1,6 +1,6 @@
 .post {
     @include margintb(20px, 49px);
-    width: var(--post-width);
+    max-width: var(--post-width);
 
     &-info {
         flex: 1;
@@ -28,6 +28,8 @@
         font-weight: 399;
         font-style: italic;
         text-transform: none;
+        text-align: left;
+        margin-left: 0;
 
         a {
             &:hover {

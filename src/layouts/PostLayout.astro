@@ -1,31 +1,20 @@
 ---
 import SingleNoH2 from "./SingleNoH2.astro"
-const { frontmatter } = Astro.props
+import TOC from "../components/TOC.astro"
+const { frontmatter, headings } = Astro.props
 
-type frontmatter = {
-    title: string,
-    author: string,
-    pubDate: Date,
-    tags: string[],
-    preamble: string,
-    image: any,
-}
-
-interface Props {
-    frontmatter: frontmatter
-}
 
 ---
 <SingleNoH2 title={frontmatter.title} >
     <main class="main-pair">
         <article class="post-field">
             <section class="post-header">
-                <h2 class="post-title">{frontmatter.title}</h2>
+                <h1 class="post-title">{frontmatter.title}</h1>
                 <div class="post-date">
                     Written by {frontmatter.author} 
                     <span>on {frontmatter.pubDate.toString().slice(0,10)}</span>
                 </div>
-                {frontmatter.tags && <div>{frontmatter.tags.map(t => <span class="tag"><a href={`tags/${t}`}>{t}</a></span>)}</div>}
+                {frontmatter.tags && <div>{frontmatter.tags.map((t: string) => <span class="tag"><a href={`tags/${t}`}>{t}</a></span>)}</div>}
                 <p style="margin-top: 30px">{frontmatter.preamble}</p>
                 {frontmatter.image && <img src={frontmatter.image.url} alt={frontmatter.image.alt}></img> }
             </section>
@@ -34,7 +23,7 @@ interface Props {
             </section>
         </article>
         <aside class="bar-right">
-            <p>placeholder</p>
+            <TOC headings={headings} />
         </aside>
     </main>
 </SingleNoH2>

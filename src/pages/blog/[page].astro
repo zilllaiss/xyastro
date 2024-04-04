@@ -68,11 +68,11 @@ const {page, uniqueTags, tagCount} = Astro.props;
         </article>
         <aside class="bar-right">
             <h3>Tags</h3>
-            <div class="section-tag">
+            <ul class="section-tag">
                 {uniqueTags.map((t: string, i: number) => { return (
-                    <div><a href={`/tags/${t}`}>{t} ({tagCount[i]})</a></div>
+                    <li><a href={`/tags/${t}`}>{t} ({tagCount[i]})</a></li>
                 )})}
-            </div>
+            </ul>
             <section class="icon">
                 <h3>Find me on:</h3>
                 <div class="icon-container">
@@ -94,8 +94,10 @@ const {page, uniqueTags, tagCount} = Astro.props;
 
 <style lang="scss">
     .header-container {
+        margin: 45px 8% 20px 7.5%;
+        
         h2 {
-            width: 1206px;
+            width: 1000px;
         }
     } 
 
