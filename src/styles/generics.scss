@@ -1,0 +1,66 @@
+@import '../styles/app.scss';
+
+body {
+    @include fontsz(16px, var(--txwhite));
+    background-image: linear-gradient(to bottom, black 1%, #00041c 75%);
+    background-attachment: fixed;
+    color: var(--txwhite);
+    font-family: var(--sans-serif);
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+            color: var(--link-blue)
+    }
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: serif;
+    margin: 30px;
+}
+
+h2 {
+    font-family: var(--sans-serif);
+    text-transform: uppercase;
+    font-weight: 610;
+    margin: 17px auto;
+}
+
+nav ul {
+    @include divcenter(unset);
+    list-style-type: none;
+    margin: 0 6rem 0 6rem;
+    padding: 0;
+    overflow: hidden;
+    min-width: 420px;
+
+    li {
+        float: left;
+
+        a {
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+
+            &:hover {
+                background-color: #252550;
+                color: inherit;
+            }
+        }
+    }
+}
+
+footer {
+    @include divcenter(column);
+    margin-top: 5rem;
+}
