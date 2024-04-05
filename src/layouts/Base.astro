@@ -32,7 +32,7 @@ const date = new Date().getFullYear();
 
         h2 {
             color: white;
-            width: 950px;
+            width: clamp(600px, 950px, 1200px);
         }
     }
 
@@ -166,7 +166,7 @@ const date = new Date().getFullYear();
     @media only screen and (max-width: 600px) {
         body {
             overflow-x: scroll;
-            background: black;
+            // background: black;
         }
         
         .toc {
@@ -181,6 +181,12 @@ const date = new Date().getFullYear();
                 li a {
                     padding: 0 5px;
                 }
+            }
+        }
+
+        .header-container {
+            h2 {
+                width: clamp(200px, 421px, 600px);
             }
         }
 
