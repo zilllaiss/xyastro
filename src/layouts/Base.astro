@@ -41,7 +41,7 @@ const date = new Date().getFullYear();
 
 
             &-child {
-                width: var(--outerwidth);
+                width: clamp(8rem, 80%, 59rem);
             }
             
             &-center {
@@ -208,10 +208,16 @@ const date = new Date().getFullYear();
                 flex-direction: column;
             }
             &-single {
+                width: unset;
+
                 &-center {
                     padding: var(--default-mobile);
                     margin: var(--default-mobile);
                     max-width: 100vw;
+                }
+
+                &-child {
+                    width: unset;
                 }
             }
 
