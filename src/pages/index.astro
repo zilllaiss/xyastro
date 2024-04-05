@@ -1,13 +1,57 @@
 ---
 import Base from "../layouts/Base.astro";
 import Nav from "../layouts/Nav.astro";
+
+const posts = await Astro.glob('./posts/*.md')
+posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate))
+const sliced = posts.slice(0, 3)
 ---
 
 <Base title="Home">
-  <Nav />
-  <main class="main-single-center">
-    <h2>Xyassraist</h2>
-    <p>Currently only a playground</p>    
-  </main>
+    <Nav />
+    <img class="icon-main" src="/icons/XYAS_fullcircle.svg" alt="xyassraist logo">
+    <main class="main-single-center">
+        <h2><a href="/blog/1">Recent Posts</a></h2>
+        <div class="grid-main">
+            {sliced.map((v, i) => {
+                var className = 'grid-first'
+                var style = ''
+                
+                if (i !== 0) {
+                    className = 'grid-item'
+                }
+
+                if (sliced.length === 2) {
+                    if (i === 1) {
+                        style = 'grid-column-start: 1; grid-column-end: 3'
+                    }
+                }
+
+                return (
+                    <article class={className} style={style}>
+                        <div class="post-header">
+                            <h3 class="post-title"><a href={v.url}>{v.frontmatter.title}</a></h3>
+                            <div class="post-date">
+                                Written by {v.frontmatter.author} 
+                                <span>on {v.frontmatter.pubDate.toString().slice(0,10)}</span>
+                            </div>
+                            {v.frontmatter.tags && <div>{v.frontmatter.tags.map((t: string) => <span class="tag"><a href={`/tags/${t}`}>{t}</a></span>)}</div>}
+                            <p>{v.frontmatter.preamble}</p>
+                            {v.frontmatter.image && <img src={v.frontmatter.image.url} alt={v.frontmatter.image.alt}></img> }
+                            <p class="readmore"><a href={v.url}>...read post</a></p>
+                        </div>
+                    </article>
+                )
+            })}  
+        </div>
+            
+    </main>
 </Base>
 
+<style lang="scss">
+    .post {
+        &-header {
+            max-width: unset;
+        }
+    }
+</style>

@@ -69,6 +69,11 @@
     grid-column-end: $colend;
 }
 
+@mixin griditemcenter() {
+    justify-self: center;
+    align-self: center;
+}
+
 :root {
     --txwhite: #e7e7e7;
     --txgray: #7c7c7c;
@@ -82,7 +87,7 @@
     --link-blue: #9eadff;
     --cyan: #00ffe7;
 
-    --contentlinespacing: 23px;
+    --contentlinespacing: 27px;
     --contentmarginright: 26px;
 
     --outerwidth: 1000px;

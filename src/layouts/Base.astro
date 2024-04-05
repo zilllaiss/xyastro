@@ -32,7 +32,7 @@ const date = new Date().getFullYear();
 
         h2 {
             color: white;
-            width: 843px;
+            width: 950px;
         }
     }
 
@@ -63,6 +63,24 @@ const date = new Date().getFullYear();
             justify-content: center;
             margin: var(--mainmargin);
             padding: var(--upperpadding);
+        }
+    }
+
+    .grid {
+        &-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: clamp(600px, 900px, 1200px);
+        }
+
+        &-first {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            @include griditemcenter()
+        }
+
+        &-item {
+            @include griditemcenter()
         }
     }
 
@@ -100,7 +118,7 @@ const date = new Date().getFullYear();
         font-family: var(--calibri);
 
         h2 {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: normal;
             padding-left: 20px;
             font-family: var(--calibri);
@@ -111,11 +129,18 @@ const date = new Date().getFullYear();
             margin-top: 0;
             list-style: none;
             padding-left: 20px;
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 
     .icon {
+        &-main {
+            display: block;
+            margin: 40px auto 0 auto; 
+            width: 121px;
+            height: auto;
+        }
+
         &-container {
             margin-bottom: 6px;
         }
@@ -128,9 +153,10 @@ const date = new Date().getFullYear();
     }
 
     .bar-right {
-        max-width: 300px;
-        width: 200px;
+        // max-width: 300px;
+        width: clamp(100px,200px,500px);
         line-height: 24px;
+        margin-left: -3px;
 
         h3 {
             font-weight: 600;

@@ -1,6 +1,6 @@
 .post {
     @include margintb(20px, 49px);
-    max-width: var(--post-width);
+    max-width: 762px;
 
     &-info {
         flex: 1;
@@ -14,7 +14,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        min-width: 410px;
+        width: clamp(600px, 750px, 1200px);
 
         h2 {
             justify-content: left
@@ -22,7 +22,7 @@
     }
 
     &-title {
-        @include fontsz(32px, var(--title-blue));
+        @include fontsz(2.2rem, var(--title-blue));
         @include margintb(15px, 3px);
         font-family: var(--sans-serif);
         font-weight: 399;
@@ -71,7 +71,7 @@
 
         p {
             @include margintb(19px, 17px);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             line-height: var(--contentlinespacing);
         }
 
@@ -82,17 +82,20 @@
         h1 {
             text-align: inherit;
             margin: 0;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-family: var(--sans-serif);
         }
 
         h2 {
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             text-transform: none;
         }
 
         h3 {
-            font-size: 1rem;
+            font-size: 1.3rem;
+            &::before {
+                content: 'ー';
+            }
         }
 
         blockquote {
@@ -119,5 +122,13 @@
     &:hover {
         background: darken($color: #3e3e3e, $amount: 10);
         color: var(--link-blue);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .post {
+        &-field {
+            width: clamp(200px,600px,610px);
+        }
     }
 }

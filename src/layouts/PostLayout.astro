@@ -15,7 +15,7 @@ const { frontmatter, headings } = Astro.props
                     <span>on {frontmatter.pubDate.toString().slice(0,10)}</span>
                 </div>
                 {frontmatter.tags && <div>{frontmatter.tags.map((t: string) => <span class="tag"><a href={`tags/${t}`}>{t}</a></span>)}</div>}
-                <p style="margin-top: 30px">{frontmatter.preamble}</p>
+                <p style="margin-top: 30px; font-size: 1.1rem">{frontmatter.preamble}</p>
                 {frontmatter.image && <img src={frontmatter.image.url} alt={frontmatter.image.alt}></img> }
             </section>
             <section class="post-content">
