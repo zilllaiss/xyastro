@@ -44,46 +44,47 @@ const {page, uniqueTags, tagCount} = Astro.props;
 
 ---
 <SingleNoH2 title="Blog">
-    <div class="header-container">
+    <div class="main-container">
         <h2>Blog</h2>
-    </div>
-    <main class="main-pair">
-        <article class="post-field">
-            {page.data.map(p => { 
-                return (
-                    <div class="post">
-                        <section class="post-date">{p.frontmatter.pubDate.toString().slice(0,10)}</section>
-                        <section class="post-container">
-                            <section class="post-header">
-                                <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
-                                {p.frontmatter.tags && <div>{p.frontmatter.tags.map((t: string) => <span class="tag"><a href={`/tags/${t}`}>{t}</a></span>)}</div>}
-                                <p>{p.frontmatter.preamble}</p>
-                                {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}></img> }
-                                <p class="readmore"><a href={p.url}>...read post</a></p>
+        <main class="main-pair">
+            <article class="post-field">
+                {page.data.map(p => { 
+                    return (
+                        <div class="post">
+                            <section class="post-date">{p.frontmatter.pubDate.toString().slice(0,10)}</section>
+                            <section class="post-container">
+                                <section class="post-header">
+                                    <h3 class="post-title"><a href={p.url}>{p.frontmatter.title}</a></h3>
+                                    {p.frontmatter.tags && <div>{p.frontmatter.tags.map((t: string) => <span class="tag"><a href={`/tags/${t}`}>{t}</a></span>)}</div>}
+                                    <p>{p.frontmatter.preamble}</p>
+                                    {p.frontmatter.image && <img src={p.frontmatter.image.url} alt={p.frontmatter.image.alt}></img> }
+                                    <p class="readmore"><a href={p.url}>...read post</a></p>
+                                </section>
                             </section>
-                        </section>
-                    </div>    
-                )
-            })}
-        </article>
-        <aside class="bar-right">
-            <h3>Tags</h3>
-            <ul class="section-tag">
-                {uniqueTags.map((t: string, i: number) => { return (
-                    <li><a href={`/tags/${t}`}>{t} ({tagCount[i]})</a></li>
-                )})}
-            </ul>
-            <section class="icon">
-                <h3>Find me on:</h3>
-                <div class="icon-container">
-                    <a href="https://github.com/zilllaiss/"><img class="icon-small" src="/icons/github.svg" alt="github">github.com/zilllaiss/</a>
-                </div>
-                <div class="icon-container">
-                    <img class="icon-small" src="/icons/discord.svg" alt="discord"><span>zill_laiss</span>
-                </div>
-            </section>
-        </aside>
-    </main>
+                        </div>    
+                    )
+                })}
+            </article>
+            <aside class="bar-right">
+                <h3>Tags</h3>
+                <ul class="section-tag">
+                    {uniqueTags.map((t: string, i: number) => { return (
+                        <li><a href={`/tags/${t}`}>{t} ({tagCount[i]})</a></li>
+                    )})}
+                </ul>
+                <section class="icon">
+                    <h3>Find me on:</h3>
+                    <div class="icon-container">
+                        <a href="https://github.com/zilllaiss/"><img class="icon-small" src="/icons/github.svg" alt="github">github.com/zilllaiss/</a>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-small" src="/icons/discord.svg" alt="discord"><span>zill_laiss</span>
+                    </div>
+                </section>
+            </aside>
+        </main>
+    </div>
+
     <div class="pagination">
         {page.currentPage - 1 > 0 && <div class="pagination-page"><a href={page.url.prev}>Prev</a></div>}
         {page.size > 7 && <div class="pagination-current">{page.currentPage}</div>}

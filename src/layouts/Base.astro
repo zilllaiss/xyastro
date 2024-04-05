@@ -25,20 +25,13 @@ const date = new Date().getFullYear();
     @import "../styles/post.scss";
     @import "../styles/generics.scss";
 
-    .header-container {
-        display: flex;
-        margin: 45px 8% 20px 8%;
-        padding: 20px 20px 0 20px;
-
-        h2 {
-            color: white;
-            width: clamp(600px, 950px, 1200px);
-        }
-    }
-
     .main {
         &-container {
-            position: relative;
+            display: flex;
+            margin: 4rem auto;
+            padding: var(--upperpadding);
+            flex-direction: column;
+            width: clamp(8rem, 80%, 59rem);
         }
 
         &-single {
@@ -56,13 +49,15 @@ const date = new Date().getFullYear();
                 margin: var(--mainmargin);
                 padding: 20px;
             }
+
+            h2 {
+                margin: 17px auto;
+            }
         }
 
         &-pair {
             display: flex;
             justify-content: center;
-            margin: var(--mainmargin);
-            padding: var(--upperpadding);
         }
     }
 
@@ -166,7 +161,7 @@ const date = new Date().getFullYear();
     @media only screen and (max-width: 600px) {
         body {
             overflow-x: scroll;
-            background: black;
+            // background: black;
         }
         
         .toc {

@@ -1,12 +1,12 @@
 @import '../styles/app.scss';
 
 body {
-    @include fontsz(16px, var(--txwhite));
+    @include fontsz(1rem, var(--txwhite));
     background-image: linear-gradient(to bottom, black 1%, #00041c 75%);
     background-attachment: fixed;
     color: var(--txwhite);
     font-family: var(--sans-serif);
-    max-width: 100%;
+    width: 99%;
     // overflow-x: hidden;
 
 }
@@ -24,14 +24,13 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     font-family: serif;
-    margin: 30px;
+    margin: 0px;
 }
 
 h2 {
     font-family: var(--sans-serif);
     text-transform: uppercase;
     font-weight: 610;
-    margin: 17px auto;
 }
 
 nav ul {

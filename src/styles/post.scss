@@ -128,7 +128,7 @@
 @media only screen and (max-width: 600px) {
     .post {
         &-field {
-            width: clamp(200px,600px,610px);
+            width: clamp(12rem,25rem,27rem);
         }
     }
 }

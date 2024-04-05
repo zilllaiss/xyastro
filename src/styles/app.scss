@@ -94,7 +94,8 @@
     --bar-width: 300px;
     --post-width: 900px;
     --upperpadding: 0px 20px 20px 20px;
-    --mainmargin: 20px 8% 20px 8%;
+    --outer-left-margin: 8%; 
+    --mainmargin: 20px var(--outer-left-margin) 20px var(--outer-left-margin);
     --sans-serif: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --calibri: calibri, Arial, Tahoma;
 }

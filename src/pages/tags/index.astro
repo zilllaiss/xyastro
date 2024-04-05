@@ -1,13 +1,14 @@
 ---
-import Single from "../../layouts/Single.astro"
+import SingleNoH2 from "../../layouts/SingleNoH2.astro"
 
 const allPosts = await Astro.glob('../posts/*.md') 
 const tags = [...new Set(allPosts.map(p => p.frontmatter.tags).flat())]
 
 ---
 
-<Single title="Tags">
-    <main class="main-single">
+<SingleNoH2 title="Tags">
+    <main class="main-container">
+        <h2>Tags</h2>
         <div class="main-single-child">
             <ul>
                 {tags.map(t => {
@@ -16,4 +17,4 @@ const tags = [...new Set(allPosts.map(p => p.frontmatter.tags).flat())]
             </ul>
         </div>
     </main>
-</Single>
+</SingleNoH2>
