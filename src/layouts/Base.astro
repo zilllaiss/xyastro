@@ -184,9 +184,15 @@ const date = new Date().getFullYear();
             }
         }
 
+        .bar-right {
+            a {
+                color: #c1cbff;
+            }
+        }
+
         .grid {
             &-main {
-                width: 500px;
+                width: clamp(200px, 430px, 600px);
                 margin-left: 20px;
             }
         }
